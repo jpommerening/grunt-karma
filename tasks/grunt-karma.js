@@ -57,12 +57,13 @@ module.exports = function(grunt) {
 
     data.files = [].concat.apply(options.files, this.files.map(function(file) {
       return file.src.map(function(src) {
-        return {
-          pattern: src,
-          watched: file.orig.watched || true,
-          served: file.orig.served || true,
-          included: file.orig.included || true
-        };
+        var obj = { pattern: src };
+        ['watched', 'served', 'included'].forEach(function(opt) {
+          if (opt in file) {
+            obj[opt] = file[opt];
+          }
+        });
+        return obj;
       });
     }));
 
