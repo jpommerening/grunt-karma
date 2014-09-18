@@ -1,8 +1,9 @@
-# grunt-karma [![Build Status](https://travis-ci.org/karma-runner/grunt-karma.svg?branch=master)](https://travis-ci.org/karma-runner/grunt-karma)
+# grunt-karma [![Build Status](https://travis-ci.org/karma-runner/grunt-karma.svg?branch=master)](https://travis-ci.org/karma-runner/grunt-karma) [![Dependency Status](https://david-dm.org/karma-runner/grunt-karma.svg)](https://david-dm.org/karma-runner/grunt-karma) [![devDependency Status](https://david-dm.org/karma-runner/grunt-karma/dev-status.svg)](https://david-dm.org/karma-runner/grunt-karma#info=devDependencies)
+
 
 > Grunt plugin for [Karma](https://github.com/karma-runner/karma)
 
-This current version `0.8.0` uses `karma@0.12.x`. For using older versions see the
+This current version uses `karma@0.12.x`. For using older versions see the
 old releases of grunt-karma.
 
 ## Getting Started
@@ -165,12 +166,16 @@ Config karma like usual (without the autoWatch option), and add
 karma: {
   unit: {
     configFile: 'karma.conf.js',
-    background: true
+    background: true,
+    singleRun: false
   }
 }
 ```
 The `background` option will tell grunt to run karma in a child process
 so it doesn't block subsequent grunt tasks.
+
+The `singleRun: false` option will tell grunt to keep the karma server up
+after a test run.
 
 Config your `watch` task to run the karma task with the `:run` flag. For example:
 
